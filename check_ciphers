@@ -1,0 +1,32 @@
+
+#/bin/bash
+#example:prog www.baidu.com 443
+#added highlighting of weak ciphers.
+
+txtred=$(tput setaf 1) # Red
+txtwht=$(tput setaf 7) # White
+
+target=$1
+port=$2
+proto=( tls1_2 tls1_1 tls1 ssl3 ssl2 )
+openssl version
+for prot in "${proto[@]}" ; do
+ ciphers='ALL'
+ cipher=" "
+ i=1
+ echo -e "$txtwht\ncheck $prot"
+ while [ "$cipher" != "0000" ] && [ "$cipher" != "" ]  ; do
+  cipher=""
+  res=`echo q|timeout 5 openssl s_client -$prot -connect $target:$port -cipher $ciphers 2>/dev/null`
+  cipher=`echo $res|egrep -o "Cipher : [A-Za-z0-9-]*"|cut -c10-`
+  if [ "$cipher" != "0000" ]  && [ "$cipher" != "" ] ; then
+      if [ `echo $cipher|grep -v ECDHE|egrep "EXP|ADH|MD5|RC4|^DHE-|^EDH-|-EDH-"|wc -l` == "0" ] ; then
+         echo "$txtwht $i:$cipher"
+      else
+        echo "$txtred $i:$cipher"
+      fi
+      i=$((i+1))
+      ciphers=`echo "$ciphers:!$cipher"`
+  fi
+  done
+done
