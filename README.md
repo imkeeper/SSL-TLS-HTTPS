@@ -16,6 +16,8 @@
 
 ## TLS1.3
 * [快速入门 TLS 1.3:改进延迟，部分握手加密](https://yatesun.com/2017/05/tlsv1.3/)
+* [试玩 nginx mainline 1.13 的 TLSv1.3](https://www.starduster.me/2017/04/27/nginx-1-13-with-tls13/)
+* [基于TLS1.3的微信安全通信协议mmtls介绍](https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md)
 * [OpenSSL Blog: Using TLS1.3 With OpenSSL](https://www.openssl.org/blog/blog/2018/02/08/tlsv1.3/)
 * [NetScaler TLS 1.3 Testing With OpenSSL](https://support.citrix.com/article/CTX229287)
 * [Deploying TLS 1.3: the great, the good and the bad ](https://www.youtube.com/watch?v=0opakLwtPWk) （P）
